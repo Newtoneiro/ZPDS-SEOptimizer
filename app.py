@@ -8,7 +8,7 @@ from utils import BEIGE, st_normal
 st.set_page_config(initial_sidebar_state="collapsed", layout="wide")
 
 # set navigation bar
-page_names = ["Start", "Analiza strony", "Generowanie artykułu", "Mój profil"]
+page_names = ["Start", "Widoczność strony", "Generowanie artykułu", "Mój profil"]
 styles = {
     "div": {"max-width": "700px"},
     "nav": {"background-color": BEIGE},
@@ -18,9 +18,9 @@ page = st_navbar(page_names, styles=styles, options=options)
 
 if page == "Start":
     pg.home_page()
-elif page == "Analiza strony":
+elif page == "Widoczność strony":
     with st_normal():
-        pg.generate_insights_page()
+        pg.progress_tracker()
 elif page == "Generowanie artykułu":
     with st_normal():
         pg.generate_article_page()
