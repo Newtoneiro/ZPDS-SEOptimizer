@@ -1,19 +1,21 @@
-import os
+import plotly.express as px
 import streamlit as st
-from src import utils
 
-
-HOME_GRAPHIC = os.path.join(utils.STATIC_PATH, "home_graphic.svg")
+from src.styles import CONTRAST_COLOR
 
 
 def render_page():
-    st.divider()
-    col1, col2 = st.columns([2, 1])
+    st.title("Jak zmienia się widoczność mojej strony?")
+    x, y = get_progress_data()
+    fig = px.line(x=x, y=y, labels={"x": "czas [tyg.]", "y": "liczba wyświetleń strony [tys.]"})
+    st.plotly_chart(
+        fig,
+        use_container_width=True,
+        theme=None,
+        color=CONTRAST_COLOR,
+    )
 
-    with col1:
-        st.header("Zwiększ widoczność swojej strony w wyszukiwaniach Google.")
 
-    with col2:
-        st.image(HOME_GRAPHIC, use_container_width=True)
-
-    st.divider()
+def get_progress_data() -> tuple[list]:
+    x = list(range(100))
+    return x, [i * 2 for i in x]

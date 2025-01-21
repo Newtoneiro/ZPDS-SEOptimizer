@@ -1,6 +1,6 @@
 # Colors
 BACKGROUND_COLOR = "#262730"
-ICON_COLOR = "lightblue"
+CONTRAST_COLOR = "lightblue"
 HOVER_COLOR = "#4c566a"
 SELECTED_BACKGROUND_COLOR = "#4a90e2"
 SELECTED_TEXT_COLOR = "white"
@@ -13,7 +13,7 @@ NAV_LINK_FONT_SIZE = "16px"
 NAVBAR_STYLES = {
     "container": {"background-color": BACKGROUND_COLOR},
     "icon": {
-        "color": ICON_COLOR,
+        "color": CONTRAST_COLOR,
         "font-size": ICON_FONT_SIZE,
         "margin-right": "10px",
     },
@@ -28,3 +28,12 @@ NAVBAR_STYLES = {
         "color": SELECTED_TEXT_COLOR,
     },
 }
+
+ARTICLE_STYLES = f"""
+    {{
+        border: 1px solid rgba(49, 51, 63, 0.2);
+        border-radius: 0.5rem;
+        padding: calc(1em - 1px);
+        background-color: {BACKGROUND_COLOR};
+    }}
+"""
