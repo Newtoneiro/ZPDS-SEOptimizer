@@ -12,9 +12,19 @@ class Article_Specification:
         self.length = length
         self.tone = tone
 
-    def generate(self):
-        self.content = generate_article(self.title)
-        return self.content
+    def generate_prompt(self):
+        prompt = (
+            f"I want you to answer in the role of a very talender copywriter that specializes in article generation."
+            f"I want you to output ONLY the contents of the article, no comments, no disclaimers - pure text."
+            f"Generate a high-quality SEO article with the following specifications:\n\n"
+            f"Title: {self.title}\n"
+            f"Primary Keywords: {', '.join(self.keywords)}\n"
+            f"Target Word Count: {self.length}\n"
+            f"Tone of Voice: {self.tone}\n\n"
+            f"Please ensure the article is well-structured, engaging, and includes relevant subheadings. Use keywords naturally and provide valuable insights to readers."
+            f"Please translate the output to polish."
+        )
+        return " ".join(prompt)
 
 
 def render_page():
@@ -61,7 +71,7 @@ def render_page():
 
 
 def generate_article(article_specifications: Article_Specification):
-    content = f"Generate a SEO inner content article with the following specifications:\n\nTitle: {article_specifications.title}\nKeywords: {', '.join(article_specifications.keywords)}\nLength: {article_specifications.length} words\nTone: {article_specifications.tone}"
+    content = article_specifications.generate_prompt()
     response = ollama.chat(
         model="llama3.2",
         messages=[
