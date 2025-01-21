@@ -22,6 +22,6 @@ def generate_article(article_specifications: Article_Specification):
     print(response.message.content)
     return response.message.content
     
-article = Article_Specification("DUPA TITLE DUPA TUTLE", ["joke", "LLM models"], 10000, "funny")
+article = Article_Specification("DUPA TITLE DUPA TUTLE", ["joke", "LLM models"], 1000, "funny")
 
 generate_article(article)
