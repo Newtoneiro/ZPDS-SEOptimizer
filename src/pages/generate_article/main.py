@@ -1,8 +1,20 @@
 import streamlit as st
-import time
+import ollama
 from streamlit_extras.stylable_container import stylable_container
 from streamlit_tags import st_tags
 from src.styles import ARTICLE_STYLES
+
+
+class Article_Specification:
+    def __init__(self, title, keywords, length, tone):
+        self.title = title
+        self.keywords = keywords
+        self.length = length
+        self.tone = tone
+
+    def generate(self):
+        self.content = generate_article(self.title)
+        return self.content
 
 
 def render_page():
@@ -42,39 +54,21 @@ def render_page():
             st.error("Proszę wybrać długość artykułu.")
         else:
             with st.spinner("Trwają obliczenia..."):
-                time.sleep(2)
-                article_text = get_article(keywords, topic, tone, length)
+                article_text = generate_article(
+                    Article_Specification(title=topic, keywords=keywords, tone=tone, length=length)
+                )
             show_article(article_text)
 
 
-def get_article(keywords: list[str], topic: str, tone: str, length: int) -> str:
-    # random paragraph
-    lorem_ipsum = """
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Integer nec odio. Praesent libero. Sed cursus
-    ante dapibus diam.Sed nisi. Nulla quis sem at nibh
-    elementum imperdiet. Duis sagittis ipsum.
-    Praesent mauris. Fusce nec tellus sed augue
-    semper porta. Mauris massa.
-    Vestibulum lacinia arcu eget nulla.
-    """
-
-    # Insert keywords in the text as bold
-    for keyword in keywords:
-        lorem_ipsum = lorem_ipsum.replace("Lorem", f"**{keyword}**", 1)
-
-    article = f"""
-    # {topic}
-
-    ### **Tytuł artykułu:** {topic}
-    ### **Ton artykułu:** {tone}
-    ### **Słowa kluczowe:** {', '.join(keywords)}
-    ### **Długość artykułu:** {length} słów
-
-    {lorem_ipsum * (length // 50)}
-    """
-
-    return article
+def generate_article(article_specifications: Article_Specification):
+    content = f"Generate a SEO inner content article with the following specifications:\n\nTitle: {article_specifications.title}\nKeywords: {', '.join(article_specifications.keywords)}\nLength: {article_specifications.length} words\nTone: {article_specifications.tone}"
+    response = ollama.chat(
+        model="llama3.2",
+        messages=[
+            {"role": "assistant", "content": content}
+        ]
+    )
+    return response.message.content
 
 
 def show_article(article_text: str):
@@ -82,4 +76,4 @@ def show_article(article_text: str):
         key="container_with_border",
         css_styles=ARTICLE_STYLES,
     ):
-        st.markdown(article_text)
+        st.write(article_text)
