@@ -1,5 +1,6 @@
 # Colors
-BACKGROUND_COLOR = "#262730"
+BACKGROUND_COLOR = "#1a1a1a"
+NAVBAR_BACKGROUND_COLOR = "#262730"
 CONTRAST_COLOR = "lightblue"
 HOVER_COLOR = "#4c566a"
 SELECTED_BACKGROUND_COLOR = "#4a90e2"
@@ -11,7 +12,7 @@ NAV_LINK_FONT_SIZE = "16px"
 
 # Navbar styles
 NAVBAR_STYLES = {
-    "container": {"background-color": BACKGROUND_COLOR},
+    "container": {"background-color": NAVBAR_BACKGROUND_COLOR},
     "icon": {
         "color": CONTRAST_COLOR,
         "font-size": ICON_FONT_SIZE,
