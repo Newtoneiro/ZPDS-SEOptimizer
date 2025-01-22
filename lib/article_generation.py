@@ -32,7 +32,6 @@ def generate_article(article_spec: ArticleSpecification):
     )
     
     article_content = response.message.content
-    print(article_content)
     return article_content
 
 if __name__ == "__main__":
@@ -43,4 +42,5 @@ if __name__ == "__main__":
         tone="profesjonalny i informatywny"
     )
 
-    generate_article(article_spec)
+    article = generate_article(article_spec)
+    print(article)
