@@ -2,7 +2,6 @@ import streamlit as st
 import ollama
 from streamlit_extras.stylable_container import stylable_container
 from streamlit_tags import st_tags
-from src.styles import ARTICLE_STYLES
 
 
 class Article_Specification:
@@ -84,6 +83,5 @@ def generate_article(article_specifications: Article_Specification):
 def show_article(article_text: str):
     with stylable_container(
         key="container_with_border",
-        css_styles=ARTICLE_STYLES,
     ):
         st.write(article_text)

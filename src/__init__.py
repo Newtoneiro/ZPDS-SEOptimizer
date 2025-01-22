@@ -1,5 +1,4 @@
 # flake8:noqa
 
-import utils
-import pages
-import styles
+import src.utils
+import src.pages

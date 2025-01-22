@@ -1,24 +1,10 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 from src.pages import PAGES
-from src.styles import NAVBAR_STYLES, BACKGROUND_COLOR
 
 
 st.set_page_config(page_title="SEOptimizer", layout="centered")
 
-st.markdown(
-    f"""
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-
-    html, body, [class*="css"]  {{
-        font-family: 'Roboto', sans-serif;
-        background-color: {BACKGROUND_COLOR};
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
 
 # Navbar menu
 selected = option_menu(
@@ -28,7 +14,6 @@ selected = option_menu(
     menu_icon="list",
     default_index=0,
     orientation="horizontal",
-    styles=NAVBAR_STYLES,
 )
 
 PAGES[selected][1]()

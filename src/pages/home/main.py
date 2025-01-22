@@ -1,8 +1,8 @@
 import streamlit as st
-import os
 from src import utils
 
-HOME_GRAPHIC = os.path.join(utils.STATIC_PATH, "home_graphic.svg")
+
+HOME_GRAPHIC = "home_graphic"
 
 
 def render_page():
@@ -13,6 +13,9 @@ def render_page():
         st.header("Zwiększ widoczność swojej strony w wyszukiwaniach Google.")
 
     with col2:
-        st.image(HOME_GRAPHIC, use_container_width=True)
+        st.image(
+            utils.get_svg_path(HOME_GRAPHIC),
+            use_container_width=True
+        )
 
     st.divider()

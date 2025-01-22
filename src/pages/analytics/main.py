@@ -1,8 +1,6 @@
 import plotly.express as px
 import streamlit as st
 
-from src.styles import CONTRAST_COLOR
-
 
 def render_page():
     st.title("Jak zmienia się widoczność mojej strony?")
@@ -12,7 +10,6 @@ def render_page():
         fig,
         use_container_width=True,
         theme=None,
-        color=CONTRAST_COLOR,
     )
 
 
