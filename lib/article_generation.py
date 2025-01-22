@@ -10,12 +10,12 @@ class ArticleSpecification:
     def generate_prompt(self):
         """Generates a detailed prompt for SEO content creation."""
         prompt = (
-            f"Generate a high-quality SEO article with the following specifications:\n\n"
-            f"Title: {self.title}\n"
-            f"Primary Keywords: {', '.join(self.keywords)}\n"
-            f"Target Word Count: {self.length}\n"
-            f"Tone of Voice: {self.tone}\n\n"
-            f"Please ensure the article is well-structured, engaging, and includes relevant subheadings. Use keywords naturally and provide valuable insights to readers."
+            f"Wygeneruj wysokiej jakości artykuł SEO o następujących specyfikacjach:\n\n"
+            f"Tytuł: {self.title}\n"
+            f"Podstawowe słowa kluczowe: {', '.join(self.keywords)}\n"
+            f"Docelowa liczba słów: {self.length}\n"
+            f"Ton głosu: {self.tone}\n\n"
+            f"Proszę upewnić się, że artykuł jest dobrze zorganizowany, angażujący i zawiera odpowiednie podtytuły. Używaj słów kluczowych naturalnie i dostarczaj cennych informacji czytelnikom."
         )
         return prompt
 
@@ -24,9 +24,9 @@ def generate_article(article_spec: ArticleSpecification):
     prompt = article_spec.generate_prompt()
     
     response = ollama.chat(
-        model="llama3.2",
+        model="mwiewior/bielik",
         messages=[
-            {"role": "system", "content": "You are an expert SEO content creator."},
+            {"role": "system", "content": "Jesteś ekspertem w tworzeniu treści SEO."},
             {"role": "user", "content": prompt}
         ]
     )
@@ -37,10 +37,10 @@ def generate_article(article_spec: ArticleSpecification):
 
 if __name__ == "__main__":
     article_spec = ArticleSpecification(
-        title="The Benefits of AI in Modern Businesses",
-        keywords=["AI", "business automation", "machine learning"],
-        length=1500,
-        tone="professional and informative"
+        title="Korzyści z AI w nowoczesnych firmach",
+        keywords=["AI", "automatyzacja biznesu", "uczenie maszynowe"],
+        length=1000,
+        tone="profesjonalny i informatywny"
     )
 
     generate_article(article_spec)
