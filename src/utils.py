@@ -22,18 +22,18 @@ class ArticleSpecification:
         self.tone = tone
 
     def generate_prompt(self):
-        prompt = (
-            "I want you to answer in the role of a very talender copywriter that specializes in article generation."
-            "I want you to output ONLY the contents of the article, no comments, no disclaimers - pure text."
-            "Generate a high-quality SEO article with the following specifications:\n\n"
-            f"Title: {self.title}\n"
-            f"Primary Keywords: {', '.join(self.keywords)}\n"
-            f"Target Word Count: {self.length}\n"
-            f"Tone of Voice: {self.tone}\n\n"
-            "Please ensure the article is well-structured, engaging, and includes relevant subheadings."
-            "Use keywords naturally and provide valuable insights to readers."
-            "Please translate the output to polish."
-        )
+        prompt = [
+            "Chcę, abyś odpowiedział w roli bardzo utalentowanego copywritera, który specjalizuje się w tworzeniu artykułów."
+            "Chcę, abyś generował WYŁĄCZNIE treść artykułu - bez komentarzy, bez TAGÓW, bez tytułów sekcji, podsumowań, bez uwag - NICZEGO."
+            "Masz zwrócić czysty tekst."
+            "Wygeneruj wysokiej jakości artykuł SEO zgodnie z poniższymi wytycznymi:\n\n"
+            f"Tytuł: {self.title}\n"
+            f"Podstawowe słowa kluczowe: {', '.join(self.keywords)}\n"
+            f"Docelowa liczba słów: {self.length}\n"
+            f"Ton wypowiedzi: {self.tone}\n\n"
+            "Upewnij się, że artykuł jest dobrze zorganizowany, angażujący i zawiera odpowiednie śródtytuły."
+            "Używaj słów kluczowych w naturalny sposób i dostarczaj czytelnikom wartościowych informacji."
+        ]
         return " ".join(prompt)
 
 

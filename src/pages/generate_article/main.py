@@ -46,9 +46,14 @@ def render_page():
                     tone=tone,
                     length=length
                 )
-            show_article(article_text)
+            show_article(article_text, keywords)
 
 
-def show_article(article_text: str):
+def show_article(article_text: str, keywords: list):
+    article_text = article_text.replace("<s>", "")
+
+    for keyword in keywords:
+        article_text = article_text.replace(keyword, f"**{keyword}**")
+
     with st.container(border=True):
-        st.write(article_text)
+        st.markdown(article_text, unsafe_allow_html=True)
