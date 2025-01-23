@@ -1,6 +1,8 @@
+datasets==3.2.0
+ollama==0.4.7
 plotly==5.24.1
 streamlit==1.41.1
-streamlit_navigation_bar==3.3.0
-streamlit_tags==1.2.8
 streamlit_option_menu==0.4.0
-ollama==0.4.7
+streamlit_tags==1.2.8
+torch==2.5.1+cu118
+transformers==4.48.1

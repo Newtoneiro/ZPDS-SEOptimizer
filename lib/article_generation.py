@@ -1,5 +1,6 @@
 import ollama
 
+
 class ArticleSpecification:
     def __init__(self, title, keywords, length, tone):
         self.title = title
@@ -19,27 +20,29 @@ class ArticleSpecification:
         )
         return prompt
 
+
 def generate_article(article_spec: ArticleSpecification):
     """Generates an SEO article using the provided specifications."""
     prompt = article_spec.generate_prompt()
-    
+
     response = ollama.chat(
         model="mwiewior/bielik",
         messages=[
             {"role": "system", "content": "Jesteś ekspertem w tworzeniu treści SEO."},
-            {"role": "user", "content": prompt}
-        ]
+            {"role": "user", "content": prompt},
+        ],
     )
-    
+
     article_content = response.message.content
     return article_content
+
 
 if __name__ == "__main__":
     article_spec = ArticleSpecification(
         title="Korzyści z AI w nowoczesnych firmach",
         keywords=["AI", "automatyzacja biznesu", "uczenie maszynowe"],
         length=1000,
-        tone="profesjonalny i informatywny"
+        tone="profesjonalny i informatywny",
     )
 
     article = generate_article(article_spec)

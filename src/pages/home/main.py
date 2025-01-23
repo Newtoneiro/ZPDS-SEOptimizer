@@ -13,9 +13,6 @@ def render_page():
         st.header("Zwiększ widoczność swojej strony w wyszukiwaniach Google.")
 
     with col2:
-        st.image(
-            utils.get_svg_path(HOME_GRAPHIC),
-            use_container_width=True
-        )
+        st.image(utils.get_svg_path(HOME_GRAPHIC), use_container_width=True)
 
     st.divider()

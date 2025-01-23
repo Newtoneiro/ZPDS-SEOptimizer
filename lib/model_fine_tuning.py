@@ -13,6 +13,7 @@ model = AutoModelForCausalLM.from_pretrained("speakleash/Bielik-7B-Instruct-v0.1
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
 
+
 def get_prompt(title, keywords, length, tone):
     prompt = [
         "Chcę, abyś odpowiedział w roli bardzo utalentowanego copywritera, który specjalizuje się w tworzeniu artykułów."
@@ -36,17 +37,19 @@ def prepare_dataset():
     preprocessed_data = []
     for entry in raw_data:
         prompt = get_prompt(
-            title=entry["title"], 
-            keywords=entry["keywords"].split(","), 
-            length=entry["length"], 
-            tone=entry["tone"]
+            title=entry["title"],
+            keywords=entry["keywords"].split(","),
+            length=entry["length"],
+            tone=entry["tone"],
         )
         preprocessed_data.append({"prompt": prompt, "article": entry["article"]})
 
-    hf_dataset = Dataset.from_dict({
-        "prompt": [item["prompt"] for item in preprocessed_data],
-        "article": [item["article"] for item in preprocessed_data]
-    })
+    hf_dataset = Dataset.from_dict(
+        {
+            "prompt": [item["prompt"] for item in preprocessed_data],
+            "article": [item["article"] for item in preprocessed_data],
+        }
+    )
 
     return hf_dataset
 
@@ -56,9 +59,13 @@ def preprocess_function(examples):
     targets = examples["article"]
 
     # Tokenize inputs
-    model_inputs = tokenizer(inputs, max_length=512, truncation=True, padding="max_length")
+    model_inputs = tokenizer(
+        inputs, max_length=512, truncation=True, padding="max_length"
+    )
     with tokenizer.as_target_tokenizer():
-        labels = tokenizer(targets, max_length=512, truncation=True, padding="max_length")
+        labels = tokenizer(
+            targets, max_length=512, truncation=True, padding="max_length"
+        )
 
     model_inputs["labels"] = labels["input_ids"]
 

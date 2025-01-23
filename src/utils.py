@@ -3,7 +3,7 @@ import streamlit as st
 import ollama
 
 
-STATIC_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'static')
+STATIC_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "static")
 
 
 def get_svg_path(name):
@@ -39,18 +39,15 @@ class ArticleSpecification:
 
 def generate_article(title, keywords, tone, length):
     prompt = ArticleSpecification(
-        title=title,
-        keywords=keywords,
-        tone=tone,
-        length=length
+        title=title, keywords=keywords, tone=tone, length=length
     ).generate_prompt()
 
     response = ollama.chat(
         model="mwiewior/bielik",
         messages=[
             {"role": "system", "content": "Jesteś ekspertem w tworzeniu treści SEO."},
-            {"role": "user", "content": prompt}
-        ]
+            {"role": "user", "content": prompt},
+        ],
     )
 
     article_content = response.message.content

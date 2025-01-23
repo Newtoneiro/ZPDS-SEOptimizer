@@ -17,7 +17,13 @@ def render_page():
 
     tone = st.selectbox(
         label="Wybierz ton artykułu",
-        options=("formalny", "nieformalny", "humorystyczny", "informacyjny", "emocjonalny"),
+        options=(
+            "formalny",
+            "nieformalny",
+            "humorystyczny",
+            "informacyjny",
+            "emocjonalny",
+        ),
     )
 
     length = st.slider(
@@ -41,10 +47,7 @@ def render_page():
         else:
             with st.spinner("Trwają obliczenia..."):
                 article_text = generate_article(
-                    title=topic,
-                    keywords=keywords,
-                    tone=tone,
-                    length=length
+                    title=topic, keywords=keywords, tone=tone, length=length
                 )
             show_article(article_text, keywords)
 
