@@ -6,7 +6,7 @@ from src.pages.analytics.main import render_page as analytics
 
 # Icons come from https://icons.getbootstrap.com/?q=wri
 PAGES = {
-    "Home": ("house-fill", home),
-    "Generate Article": ("pen-fill", generate_article),
-    "Page Analytics": ("graph-up", analytics),
+    "SEOptimizer": ("house-fill", home),
+    "Artykuły": ("pen-fill", generate_article),
+    "Statystyki": ("graph-up", analytics),
 }

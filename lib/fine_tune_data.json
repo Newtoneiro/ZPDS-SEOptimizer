@@ -1,0 +1,44 @@
+[
+    {
+        "title": "Energia odnawialna - czy warto?",
+        "keywords": "energia odnawialna,fotowoltaika,zielona energia",
+        "length": 250,
+        "tone": "edukacyjny",
+        "article": "Energia odnawialna to przyszłość naszego świata. Dzięki takim technologiom jak fotowoltaika, możemy zredukować emisję CO2 i oszczędzać na rachunkach za energię. Inwestowanie w zieloną energię to krok w stronę zrównoważonego rozwoju, który chroni środowisko i wspiera lokalne społeczności."
+    },
+    {
+        "title": "Jak oszczędzać wodę w domu?",
+        "keywords": "oszczędzanie wody,ekologiczne nawyki,oszczędność",
+        "length": 300,
+        "tone": "praktyczny",
+        "article": "Oszczędzanie wody w domu to nie tylko korzyść dla środowiska, ale i dla Twojego portfela. Zacznij od prostych zmian, takich jak instalacja perlatora na kranie, który zmniejsza zużycie wody o 50%. Dbaj o naprawę cieknących kranów i używaj zmywarki w trybie ekologicznym. Ekologiczne nawyki mogą znacznie obniżyć Twoje rachunki."
+    },
+    {
+        "title": "Zalety diety roślinnej dla zdrowia",
+        "keywords": "dieta roślinna,zdrowe odżywianie,weganizm",
+        "length": 400,
+        "tone": "inspirujący",
+        "article": "Dieta roślinna zdobywa coraz większą popularność dzięki swoim korzyściom zdrowotnym. Regularne spożywanie warzyw, owoców, roślin strączkowych i orzechów pomaga obniżyć poziom cholesterolu i zmniejsza ryzyko chorób serca. Weganizm to także świetny sposób na dostarczanie organizmowi błonnika i antyoksydantów, które poprawiają trawienie i wzmacniają odporność."
+    },
+    {
+        "title": "5 najpopularniejszych kierunków wakacyjnych 2025",
+        "keywords": "wakacje 2025,podróże,trendy turystyczne",
+        "length": 500,
+        "tone": "informacyjny",
+        "article": "Rok 2025 przynosi wiele ciekawych trendów turystycznych. Wśród najpopularniejszych kierunków wakacyjnych znajdziemy Malediwy, które przyciągają nieskazitelnie czystymi plażami i luksusowymi resortami. Kolejnym hitem są greckie wyspy, takie jak Santorini i Kreta, idealne dla miłośników słońca i historii. W Europie coraz więcej turystów wybiera podróże koleją, eksplorując malownicze regiony Szwajcarii. Dalekie destynacje, jak Japonia czy Nowa Zelandia, oferują niezapomniane przygody dla fanów kultury i przyrody."
+    },
+    {
+        "title": "Poradnik dla początkujących: Jak założyć bloga?",
+        "keywords": "zakładanie bloga,blog dla początkujących,poradnik",
+        "length": 350,
+        "tone": "motywujący",
+        "article": "Zakładanie bloga to świetny sposób na dzielenie się swoją pasją i zarabianie pieniędzy online. Na początek wybierz temat, który Cię interesuje i sprawia, że pisanie będzie przyjemnością. Następnie zdecyduj się na platformę blogową, np. WordPress, która oferuje intuicyjne narzędzia do tworzenia stron. Regularne publikowanie wartościowych treści oraz promocja w mediach społecznościowych to klucz do sukcesu."
+    },
+    {
+        "title": "Korzyści z regularnego uprawiania jogi",
+        "keywords": "joga,zdrowie,relaks",
+        "length": 300,
+        "tone": "relaksujący",
+        "article": "Joga to nie tylko sposób na poprawę elastyczności ciała, ale także na redukcję stresu i poprawę samopoczucia. Regularne ćwiczenia pomagają wzmocnić mięśnie, poprawić postawę i zrelaksować umysł. Ćwicząc jogę, możesz również zwiększyć swoją odporność na stres i znaleźć chwilę spokoju w codziennym chaosie."
+    }
+]
