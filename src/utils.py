@@ -1,9 +1,15 @@
 import os
 import streamlit as st
 import ollama
+import pandas as pd
+from googleapiclient.errors import HttpError
+from googleapiclient.discovery import build
+from google.oauth2.service_account import Credentials
+from datetime import datetime, timedelta
 
 
 STATIC_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "static")
+KEYS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "keys")
 
 
 def get_svg_path(name):
@@ -52,3 +58,49 @@ def generate_article(title, keywords, tone, length):
 
     article_content = response.message.content
     return article_content
+
+
+def get_website_views_over_time(site_url):
+    # Calculate date range (30 days back)
+    end_date = datetime.now().strftime("%Y-%m-%d")
+    start_date = (datetime.now() - timedelta(days=30)).strftime("%Y-%m-%d")
+
+    # Authenticate
+    credentials_file = os.path.join(KEYS_PATH, "credentials.json")
+    credentials = Credentials.from_service_account_file(
+        credentials_file, scopes=["https://www.googleapis.com/auth/webmasters.readonly"]
+    )
+    service = build("searchconsole", "v1", credentials=credentials)
+
+    # Query for search analytics
+    try:
+        # Prepare the API request
+        request = {
+            "startDate": start_date,
+            "endDate": end_date,
+            "dimensions": ["date"],
+            "rowLimit": 10000,
+        }
+        # Execute the API request
+        response = (
+            service.searchanalytics().query(siteUrl=site_url, body=request).execute()
+        )
+
+    except HttpError as e:
+        error_message = f"Google Search Console API error: {e}"
+        return pd.DataFrame(), error_message
+
+    except Exception as e:
+        error_message = f"An unexpected error occurred: {e}"
+        return pd.DataFrame(), error_message
+
+    # Process the response
+    if "rows" not in response:
+        return pd.DataFrame(), "No data available for the given date range."
+
+    data = []
+    for row in response["rows"]:
+        data.append({"date": row["keys"][0], "views": row["clicks"]})
+
+    df = pd.DataFrame(data)
+    return df, "Success"
