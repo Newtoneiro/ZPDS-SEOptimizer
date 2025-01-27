@@ -10,6 +10,7 @@ def render_page():
 
     if site_url:
         df, message = get_website_views_over_time(site_url)
+        print(df)
 
         if df.empty:
             st.info(f"No data to display. Reason: {message}")
@@ -25,4 +26,5 @@ def render_page():
                 },
                 title="Liczba wyświetleń strony w ciągu ostatnich 30 dni",
             )
+            fig.update_yaxes(range=[0, 1000])
             st.plotly_chart(fig, use_container_width=True)
